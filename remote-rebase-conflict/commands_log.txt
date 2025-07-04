@@ -1,0 +1,41 @@
+# Git Remote Rebase Conflict Experiment - Commands
+
+# Init remote repo
+mkdir git_origin
+cd git_origin
+git init
+echo 'first change' > file1
+git add file1
+git commit -m 'initial commit'
+
+# Clone it
+cd ..
+git clone git_origin cloned_repo
+
+# Add feature branch in origin
+cd git_origin
+git checkout -b feature1
+echo 'second change' >> file1
+git commit -am 'second commit'
+
+# Make third change in cloned repo
+cd ../cloned_repo
+git checkout feature1
+echo 'third change' >> file1
+git commit -am 'third commit'
+
+# Attempt rebase
+git fetch origin
+git rebase origin/feature1
+
+# Push — error due to remote being non-bare
+git push origin feature1
+
+# Fix: go to remote and switch branch to master
+cd ../git_origin
+git checkout master
+
+# Now push from clone
+cd ../cloned_repo
+git push origin feature1
+
