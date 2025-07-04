@@ -37,5 +37,10 @@ See [`commands_log.txt`](./commands_log.txt) for the complete terminal journey.
 
 ---
 
-<pre><code> ## 📦 Repo Structure ``` remote-rebase-conflict/ ├── git_origin/ # Simulated remote ├── cloned_repo/ # Local clone acting as contributor ├── commands_log.txt # Full Git experiment commands └── README.md # Explanation of the experiment ``` </code></pre>
+## 📦 Repo Structure
 
+remote-rebase-conflict/
+├── git_origin/ # Simulated remote repository
+├── cloned_repo/ # Local clone acting as a contributor
+├── commands_log.txt # Full log of Git experiment commands
+└── README.md # Explanation of the experiment
