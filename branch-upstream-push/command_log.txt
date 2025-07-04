@@ -1,0 +1,44 @@
+# Step 1: Create main experiment folder and initialize remote
+mkdir branch-upstream-push
+cd branch-upstream-push/
+mkdir git_origin
+cd git_origin/
+git init
+echo 'first change' > file1
+git add file1
+git commit -m 'first commit'
+
+# Step 2: Clone simulated remote into local cloned_repo
+cd ..
+git clone ./git_origin cloned_repo
+cd cloned_repo/
+git checkout -b feature1
+echo 'cloned branch changes' >> file1
+git commit -am 'second commit'
+
+# Step 3: Attempt to push (fails due to no upstream)
+git push
+
+# Git outputs error and suggestion to use --set-upstream
+# Fix by pushing to origin explicitly
+git push origin feature1
+
+# (Optional but useful): Set upstream explicitly
+git push -u origin feature1
+
+# Validate tracking setup
+git branch -vv
+
+# Check branch visibility from remote
+cd ../git_origin/
+git branch
+cat file1
+git checkout feature1
+cat file1
+
+# Back to clone, confirm branch switch
+cd ../cloned_repo/
+cat file1
+git checkout master
+cat file1
+
