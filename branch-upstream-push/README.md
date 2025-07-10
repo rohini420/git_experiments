@@ -6,12 +6,13 @@ This experiment walks through what happens when you try to push a newly created 
 
 ## 📁 Folder Structure
 
+```
 branch-upstream-push/
-├── git_origin/ # Simulated remote repository (non-bare)
-├── cloned_repo/ # Local clone acting as a contributor
-├── command_log.txt # Full Git command history used in this experiment
-└── README.md # This file explaining the experiment
-
+├── git_origin/          # Simulated remote repository (non-bare)
+├── cloned_repo/         # Local clone acting as a contributor
+├── command_log.txt      # Full Git command history used in this experiment
+└── README.md           # This file explaining the experiment
+```
 
 ---
 
@@ -27,32 +28,74 @@ We simulate a real-world situation where:
 6. The issue is resolved using:
    ```bash
    git push --set-upstream origin feature1
+   ```
 
-🧠 Key Learning
-When you create a new branch locally and attempt to push it to a remote for the first time, Git doesn’t automatically know which remote branch to track unless you specify it. That’s why this error appears:
+---
 
-❌ "The current branch 'feature1' has no upstream branch."
+## 🧠 Key Learning
+
+When you create a new branch locally and attempt to push it to a remote for the first time, Git doesn't automatically know which remote branch to track unless you specify it. That's why this error appears:
+
+❌ **"The current branch 'feature1' has no upstream branch."**
+
+### 🔧 Solutions
 
 You can fix it in two ways:
 
-By specifying the branch and remote directly:
-
+#### Method 1: Set upstream while pushing (Recommended)
+```bash
 git push -u origin feature1
+```
 
-Or by setting the upstream explicitly later:
-
+#### Method 2: Set upstream explicitly after pushing
+```bash
+git push origin feature1
 git branch --set-upstream-to=origin/feature1 feature1
+```
 
-After the upstream is set, all future git push and git pull commands will automatically sync with the correct remote branch.
+After the upstream is set, all future `git push` and `git pull` commands will automatically sync with the correct remote branch.
 
-✅ Result
+---
+
+## ✅ Result
 
 After setting the upstream, the branch successfully tracks the remote branch:
 
+```bash
+git branch -vv
+* feature1 a86a8a2 [origin/feature1] second commit
+  master   6447cd3 [origin/master] first commit
+```
+
+---
+
+## 🧾 Bonus Tips
+
+- **Use the `-u` flag** just once while pushing the branch the first time. From then on, just `git push` and `git pull` will work smoothly.
+- **Check tracking status** with `git branch -vv` to see which branches are tracking remotes.
+- **Set default push behavior** with `git config push.default current` to always push to a branch with the same name.
+
+---
+
+## 📚 Understanding Upstream Tracking
+
+**Upstream tracking** creates a link between your local branch and a remote branch, enabling:
+- `git push` without specifying remote and branch names
+- `git pull` to automatically fetch and merge from the correct remote branch
+- `git status` to show how many commits you're ahead/behind the remote
+
+### Common Commands for Upstream Management
+
+```bash
+# Check current upstream configuration
 git branch -vv
 
-* feature1 a86a8a2 [origin/feature1] second commit
-  master    6447cd3 [origin/master] first commit
+# Set upstream for current branch
+git branch --set-upstream-to=origin/branch-name
 
-🧾 Bonus Tip
-You can use the -u flag just once while pushing the branch the first time. From then on, just git push and git pull will work smoothly.
+# Push and set upstream in one command
+git push -u origin branch-name
+
+# Remove upstream tracking
+git branch --unset-upstream
+```
