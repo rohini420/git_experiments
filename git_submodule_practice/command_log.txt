@@ -1,0 +1,35 @@
+# Setup: Create Main Repo and Submodule
+cd git_experiments/
+mkdir git_submodule_practice && cd git_submodule_practice
+mkdir rohinilib && cd rohinilib
+git init
+echo "file1 content" > file1
+git add file1
+git commit -m "Initial commit in rohinilib"
+git checkout -b experimental
+echo "experimental changes" >> file1
+git commit -am "Experimental update"
+cd ..
+
+# Create remo_repo and add submodule
+mkdir remo_repo && cd remo_repo
+git init
+touch main_script.sh
+git add main_script.sh
+git commit -m "Initial script"
+git submodule add ../rohinilib
+git commit -am "Added rohinilib as submodule"
+cd ..
+
+# Clone Without Submodules
+git clone remo_repo remo_repo_cloned
+cd remo_repo_cloned
+git submodule init
+git submodule update
+cd ..
+
+# Clone With --recursive Option
+git clone --recursive remo_repo remo_repo_cloned_recursive
+cd remo_repo_cloned_recursive
+git submodule status
+
