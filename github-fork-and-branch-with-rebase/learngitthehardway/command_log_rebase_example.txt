@@ -1,0 +1,16 @@
+# Git Commands for Rebase Experiment
+
+mkdir rebase_example
+cd rebase_example/
+git clone https://github.com/rohini420/learngitthehardway.git
+cd learngitthehardway/
+git checkout -b feature-hello
+echo "hello from contributor" >> README.md
+git add README.md
+git commit -m "Added hello message"
+git remote add upstream https://github.com/ianmiell/learngitthehardway.git
+git fetch upstream
+git rebase upstream/master
+# conflict occurs, resolve using editor
+git add README.md
+git rebase --continue
