@@ -1,4 +1,4 @@
-# Git Hooks Tutorial
+# Git Hooks
 
 A comprehensive guide to understanding and implementing Git hooks for automated workflow enforcement.
 
