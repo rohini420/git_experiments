@@ -1,4 +1,4 @@
-# Git Bare Repository Collaboration Guide
+# Git Bare Repository Collaboration
 
 This guide demonstrates how multiple developers (Swathi and Hemanth) collaborate using a Git bare repository as a central remote server. We'll also explore what happens when commit history is rewritten through squashing.
 
