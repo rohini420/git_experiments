@@ -1,0 +1,16 @@
+b25335036531adcf42170be0afad1f6460ad02ff
+diff --git a/afile b/afile
+index 6e01850..7f972c0 100644
+--- a/afile
++++ b/afile
+@@ -1,2 +1,3 @@
+ first change on master
+ first change on feature1
++second change on feature1
+diff --git a/newfile b/newfile
+new file mode 100644
+index 0000000..e97a184
+--- /dev/null
++++ b/newfile
+@@ -0,0 +1 @@
++newfile on feature1
