@@ -1,4 +1,4 @@
-# Git Cherry-Pick and Three-Way Merge Guide
+# Git Cherry-Pick and Three-Way Merge
 
 A comprehensive guide to understanding Git cherry-pick, three-way merges, and patch application workflows based on practical exploration and testing.
 
