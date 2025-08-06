@@ -1,4 +1,4 @@
-# Git Squash Experiment - Step by Step Guide
+# Git Squash Experiment - Step by Step
 
 This guide walks you through a complete Git squash experiment, demonstrating how to combine multiple commits into a single commit using interactive rebase.
 
